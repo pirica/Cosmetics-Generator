@@ -23,11 +23,11 @@ Open `config.json` in your preferred text editor, fill the configurable values. 
 **Sample Image:**
 
 <p align="left">
-    <img src="https://imgur.com/aXdT538" width="512" draggable="false">
+    <img src="https://cdn.discordapp.com/attachments/839253012765343764/895412164247035994/newcosmetics.jpg" width="512" draggable="false">
 </p>
 
 <p align="left">
-    <img src="https://imgur.com/XpnbdEO" width="512" draggable="false">
+    <img src="https://cdn.discordapp.com/attachments/839253012765343764/895412183733768282/CID_A_210_Athena_Commando_F_RenegadeSkull.png" width="512" draggable="false">
 </p>
 
 ## Credits
