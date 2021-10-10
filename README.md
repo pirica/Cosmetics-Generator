@@ -2,14 +2,13 @@
 
 This cosmetics generator allows you to generate the new Fortnite cosmetics, Search pak and search cosmetics!
 
-Remember to put the language and the search language in the json file [**config.json**](https://github.com/djlorenzouasset/Cosmetics-Generator/blob/main/config.json)
-
+Remember to put the language and the search language in [**config.json**](https://github.com/djlorenzouasset/Cosmetics-Generator/blob/main/config.json)
 
 # Requirements
 
-To run AutoLeak, you must have [Python >=3.8](https://www.python.org/downloads/) installed on your computer.
+[Python >=3.8](https://www.python.org/downloads/) (installed on your computer)
 
-If you want install all requirements in one click open **(install.bat)** or **(install.sh)**
+If you want install all requirements in one click open **(install.bat)**
 
 
 ### How to use?
@@ -23,7 +22,7 @@ Open `config.json` in your preferred text editor, fill the configurable values. 
 **Sample Image:**
 
 <p align="left">
-    <img src="https://cdn.discordapp.com/attachments/839253012765343764/895412164247035994/newcosmetics.jpg" width="512" draggable="false">
+    <img src="https://cdn.discordapp.com/attachments/797918649163317310/896719623574147082/newcosmetics.jpg" width="512" draggable="false">
 </p>
 
 <p align="left">
@@ -34,4 +33,4 @@ Open `config.json` in your preferred text editor, fill the configurable values. 
 
 - Fortnite Data provided by [Fortnite-API](https://fortnite-api.com/)
 - Cataba assets property of [FModel](https://github.com/iAmAsval/FModel)
-- Icons generator property of [MyNameIsDark](https://github.com/MyNameIsDark01)
+- Icons generator made by [MyNameIsDark](https://github.com/MyNameIsDark01)
