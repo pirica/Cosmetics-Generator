@@ -44,7 +44,7 @@ class main:
 
 
     def w(self) -> None:
-        print(Fore.GREEN + f"Welcome {os.environ['username']} in this program!\nThis program is still in beta, with it you will be able to generate new cosmetics, search for items and sets.\nBelow you have a list of features, choose!")
+        print(Fore.GREEN + f"Welcome {os.environ['username']} in this program!\nThis program is be able to generate new cosmetics, search for items and sets.\nBelow you have a list of features, choose!")
         print("")
         print(Fore.GREEN + "\n- - - - - MENU - - - - -")
         print("")
