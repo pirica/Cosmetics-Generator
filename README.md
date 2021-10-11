@@ -34,3 +34,4 @@ Open `config.json` in your preferred text editor, fill the configurable values. 
 - Fortnite Data provided by [Fortnite-API](https://fortnite-api.com/)
 - Cataba assets property of [FModel](https://github.com/iAmAsval/FModel)
 - Icons generator made by [MyNameIsDark](https://github.com/MyNameIsDark01)
+- From an idea of [Fevers](https://github.com/FortniteFevers) 
