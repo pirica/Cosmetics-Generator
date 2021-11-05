@@ -1,5 +1,15 @@
 {
     "language": "en",
     "searchLanguage": "en",
-    "mergeauto": "True"
+    "mergeauto": "True",
+    "twitter": {                             
+        "enabled": false,  
+		"apiKey": "",
+		"apiSecret": "",
+		"accessToken": "",
+		"accessTokenSecret": "",
+        "newcosmeticsText": "",
+        "pakText": ""
+
+    }
 }

@@ -1,12 +1,14 @@
 import json
 import colorama 
 import os
+import time
 
 from PIL import Image
 from colorama import Fore
 from util.error import NoDigit
 from util.commands import Commands
 from typing import Union
+from util.twitter import Twitter
 
 colorama.init(autoreset=True)
 
@@ -14,16 +16,33 @@ class main:
     def __init__(self):
 
         try:
+            print(Fore.GREEN + "Loading settings..")
             config = json.loads(open("config.json").read()) # load configurations
 
             self.language = config.get('language')
             self.searchlanguage = config.get('searchLanguage')         
             self.mergeauto = config.get('mergeauto')
+            twitter = config.get('twitter', {})
+            self.twitter = None
+            self.newcosmeticsText = twitter.get('newcosmeticsText', '')
+            self.pakText = twitter.get('pakText', '')
+            if twitter.get('enabled'):
+                apiKey = twitter.get('apiKey')
+                apiSecret = twitter.get('apiSecret')
+                accessToken = twitter.get('accessToken')
+                accessTokenSecret = twitter.get('accessTokenSecret')
+                self.twitter = Twitter(
+                    apiKey, apiSecret, accessToken, accessTokenSecret
+                )
+            else:
+                self.twitter = False
             
         except Exception as e:
             print(Fore.RED + f"{e}")
         except FileNotFoundError as e:
             print(Fore.RED + f"{e}")
+        time.sleep(3)
+        os.system('cls')
 
 
     # ==> Main Thread
@@ -52,6 +71,8 @@ class main:
         print(Fore.YELLOW + "(2)" + Fore.GREEN + " - Search for a cosmetics")
         print(Fore.YELLOW + "(3)" + Fore.GREEN + " - Search for a pak")
         print(Fore.YELLOW + "(4)" + Fore.GREEN + " - Merge images in cache folder")
+        print(Fore.YELLOW + "(5)" + Fore.GREEN + " - New Features")
+
 
 
     def inputs(self, x: Union[str, int, None]):
@@ -59,12 +80,14 @@ class main:
         searchcosm = Commands(self)
         pak = Commands(self)
         merge = Commands(self)
+        features = Commands(self)
 
         choices = {
             1: newcosm.NewCosmetics,
             2: searchcosm.SearchCosmetic,
             3: pak.paksearch,
-            4: merge.merge
+            4: merge.merge,
+            5: features.feature
         }
 
         if isinstance(x, str):

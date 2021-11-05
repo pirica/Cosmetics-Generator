@@ -1,4 +1,3 @@
-import httpx
 import colorama 
 import time
 import glob
@@ -18,6 +17,13 @@ class Commands:
         self.language = data.language
         self.searchlanguage = data.searchlanguage
         self.automerge = data.mergeauto
+        self.twitter = data.twitter
+        self.newtext = data.newcosmeticsText
+        self.paktext = data.pakText
+
+    def feature(self):
+        print(Fore.RED + "---- NEW FEATURES ----")
+        print(Fore.YELLOW + "[1]" + Fore.GREEN + "Added autopost to Twitter!")
 
     def NewCosmetics(self):
         print(Fore.GREEN + "Generating new cosmetics..")
@@ -25,7 +31,7 @@ class Commands:
             f'https://fortnite-api.com/v2/cosmetics/br/new?language={self.language}'
         )
         responce = res.json()
-        if responce['status'] == 200:
+        if responce.status_code == 200:
             responce = res.json()['data']['items']
             start = time.time()
             count = 1
@@ -57,6 +63,14 @@ class Commands:
                     i += 1
                 image.save('images/newcosmetics.jpg')
                 image.show()
+                if self.twitter != False:
+                    try:
+                        self.twitter.update_with_media(
+                            "images/newcosmetics.jpg",
+                            status=self.newText
+                        )
+                    except Exception as exception:
+                        print(Fore.RED + f"Failed to tweet the newcosmetics image!\n{exception}")
             print(Fore.GREEN + f"Generated in {round(time.time() - start, 2)} seconds")
             deleter()
         elif responce['status'] != 200:
@@ -120,6 +134,14 @@ class Commands:
                     i += 1
                 image.save(f'images/pak {ask}.jpg')
                 image.show()
+                if self.twitter != False:
+                    try:
+                        self.twitter.update_with_media(
+                            f"images/pak {ask}.jpg",
+                            status=self.pakText
+                        )
+                    except Exception as exception:
+                        print(Fore.RED + f"Failed to tweet the pak image!\n{exception}")
             print(Fore.GREEN + f"Generated in {round(time.time() - start, 2)} seconds")
             deleter()
         elif res.status_code != 200:
