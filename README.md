@@ -22,10 +22,6 @@ Open `config.json` in your preferred text editor, fill the configurable values. 
 **Sample Image:**
 
 <p align="left">
-    <img src="https://cdn.discordapp.com/attachments/797918649163317310/896719623574147082/newcosmetics.jpg" width="512" draggable="false">
-</p>
-
-<p align="left">
     <img src="https://cdn.discordapp.com/attachments/839253012765343764/895412183733768282/CID_A_210_Athena_Commando_F_RenegadeSkull.png" width="512" draggable="false">
 </p>
 
