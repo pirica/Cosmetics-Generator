@@ -29,6 +29,13 @@ Open `config.json` in your preferred text editor, fill the configurable values. 
     <img src="https://cdn.discordapp.com/attachments/839253012765343764/895412183733768282/CID_A_210_Athena_Commando_F_RenegadeSkull.png" width="512" draggable="false">
 </p>
 
+## Features:
+ 
+ - Added **set search** command
+ - Added **Box error**
+ - Fixed some issues
+ - Added **new features** command
+
 ## Credits
 
 - Fortnite Data provided by [Fortnite-API](https://fortnite-api.com/)
