@@ -25,6 +25,7 @@ class Commands:
         print(Fore.RED + "---- NEW FEATURES ----")
         print(Fore.YELLOW + "[1]" + Fore.GREEN + "Added autopost to Twitter!")
         print(Fore.YELLOW + "[2]" + Fore.GREEN + "Added box error")
+        print(Fore.YELLOW + "[3]" + Fore.GREEN + "Added set search command")
 
     def NewCosmetics(self):
         print(Fore.GREEN + "Generating new cosmetics..")
