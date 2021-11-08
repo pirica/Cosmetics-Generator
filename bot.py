@@ -1,14 +1,23 @@
-import json
-import colorama 
-import os
-import time
+try:
+    import tkinter as tk
+    import tkinter.messagebox
+    import json
+    import colorama
+    import os
+    import time    
+    import webbrowser
 
-from PIL import Image
-from colorama import Fore
-from util.error import NoDigit
-from util.commands import Commands
-from typing import Union
-from util.twitter import Twitter
+    from colorama import Fore
+    from typing import Union
+
+    from util.error import NoDigit
+    from util.commands import Commands
+    from util.twitter import Twitter
+except ModuleNotFoundError as e:
+    print(Fore.RED + "Error: " + e)
+
+window = tk.Tk()
+window.wm_withdraw()
 
 colorama.init(autoreset=True)
 
@@ -16,9 +25,14 @@ class main:
     def __init__(self):
 
         try:
+            m = tkinter.messagebox.showinfo(title="Cosmetics Generator - Made by ᴅᴊʟᴏʀ3xᴢo", message=f"Hey {os.environ['username']}!\nRemember that you can follow me on Twitter (by clicking the 'ok' button below) and leave a star on Github!")
+            if m == True:
+                webbrowser.open_new('https://twitter.com/djlorenzouasset')
+            else:
+                webbrowser.open_new('https://twitter.com/djlorenzouasset')
             print(Fore.GREEN + "Loading settings..")
             config = json.loads(open("config.json").read()) # load configurations
-
+            self.BoxIn = config.get('BoxIn')
             self.language = config.get('language')
             self.searchlanguage = config.get('searchLanguage')         
             self.mergeauto = config.get('mergeauto')
@@ -38,12 +52,19 @@ class main:
                 self.twitter = False
             
         except Exception as e:
-            print(Fore.RED + f"{e}")
+            error = tkinter.messagebox.showerror(title="Error",message=f"An error accured:\n{e}",parent=window)
+            if error == True:
+                exit()
+            else:
+                exit()
         except FileNotFoundError as e:
-            print(Fore.RED + f"{e}")
+            error = tkinter.messagebox.showerror(title="Error",message=f"An error accured:\n{e}",parent=window)
+            if error == True:
+                exit()
+            else:
+                exit()
         time.sleep(3)
         os.system('cls')
-
 
     # ==> Main Thread
     def main(self):
@@ -70,8 +91,9 @@ class main:
         print(Fore.YELLOW + "(1)" + Fore.GREEN + " - Generate newcosmetics")
         print(Fore.YELLOW + "(2)" + Fore.GREEN + " - Search for a cosmetics")
         print(Fore.YELLOW + "(3)" + Fore.GREEN + " - Search for a pak")
-        print(Fore.YELLOW + "(4)" + Fore.GREEN + " - Merge images in cache folder")
-        print(Fore.YELLOW + "(5)" + Fore.GREEN + " - New Features")
+        print(Fore.YELLOW + "(4)" + Fore.GREEN + " - Search for a set")
+        print(Fore.YELLOW + "(5)" + Fore.GREEN + " - Merge images in cache folder")
+        print(Fore.YELLOW + "(6)" + Fore.GREEN + " - New Features")
 
 
 
@@ -86,8 +108,9 @@ class main:
             1: newcosm.NewCosmetics,
             2: searchcosm.SearchCosmetic,
             3: pak.paksearch,
-            4: merge.merge,
-            5: features.feature
+            4: searchcosm.set,
+            5: merge.merge,
+            6: features.feature
         }
 
         if isinstance(x, str):

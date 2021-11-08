@@ -24,6 +24,7 @@ class Commands:
     def feature(self):
         print(Fore.RED + "---- NEW FEATURES ----")
         print(Fore.YELLOW + "[1]" + Fore.GREEN + "Added autopost to Twitter!")
+        print(Fore.YELLOW + "[2]" + Fore.GREEN + "Added box error")
 
     def NewCosmetics(self):
         print(Fore.GREEN + "Generating new cosmetics..")
@@ -171,3 +172,45 @@ class Commands:
             i += 1
         image.save('images/merge.jpg')
         image.show()
+
+    def set(self):
+        print(Fore.GREEN + "What set you want to grab?")
+        ask = input(">>")
+        res = requests.get(
+            f'https://fortnite-api.com/v2/cosmetics/br/search/all?set={ask}&language={self.language}&searchLanguage={self.searchlanguage}'
+        )
+        if res.status_code == 200:
+            res = res.json()['data']
+            count = 1
+            for data in res:
+                percentage = (count/len(res)) * 100
+                BaseIcon().main(data)
+                print(Fore.BLUE + f"Generated image for {data['id']} -" + Fore.YELLOW + f" {count}/{len(res)} - {round(percentage)}%")
+                count += 1
+            if self.automerge:
+                print(Fore.BLUE + "Merging images...")
+                datas = [Image.open(i) for i in glob.glob(f'cache/*.png')]
+                    
+                row_n = len(datas)
+                rowslen = ceil(sqrt(row_n))
+                columnslen = round(sqrt(row_n))
+
+                mode = "RGB"
+                px = 512
+                rows = rowslen * px
+                columns = columnslen * px
+                image = Image.new(mode, (rows, columns))
+                i = 0
+                for card in datas:
+                    image.paste(
+                        card,
+                        ((0 + ((i % rowslen) * card.width)),
+                        (0 + ((i // rowslen) * card.height)))
+                    )
+                    i += 1
+                image.save(f'images/{ask}.jpg')
+                image.show()
+        elif res.status_code == 404:
+            print(Fore.RED + f"[ERROR] The cosmetic you search doesn't exist")
+        else:
+            print(Fore.RED + "Api down!")
