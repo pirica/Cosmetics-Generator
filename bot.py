@@ -1,3 +1,5 @@
+"""Program created by @djlorenzouasset on Github all right are reserved"""
+
 try:
     import tkinter as tk
     import tkinter.messagebox
