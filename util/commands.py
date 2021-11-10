@@ -177,11 +177,12 @@ class Commands:
     def set(self):
         print(Fore.GREEN + "What set you want to grab?")
         ask = input(">>")
-        res = requests.get(
+        resp = requests.get(
             f'https://fortnite-api.com/v2/cosmetics/br/search/all?set={ask}&language={self.language}&searchLanguage={self.searchlanguage}'
         )
-        if res.status_code == 200:
-            res = res.json()['data']
+
+        if resp.status_code == 200:
+            res = resp.json()['data']
             count = 1
             for data in res:
                 percentage = (count/len(res)) * 100
@@ -211,7 +212,7 @@ class Commands:
                     i += 1
                 image.save(f'images/{ask}.jpg')
                 image.show()
-        elif res.status_code == 404:
+        elif resp.status_code == 404:
             print(Fore.RED + f"[ERROR] The cosmetic you search doesn't exist")
         else:
             print(Fore.RED + "Api down!")
