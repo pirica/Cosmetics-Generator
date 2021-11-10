@@ -33,7 +33,7 @@ class Commands:
             f'https://fortnite-api.com/v2/cosmetics/br/new?language={self.language}'
         )
         responce = res.json()
-        if responce.status_code == 200:
+        if res.status_code == 200:
             responce = res.json()['data']['items']
             start = time.time()
             count = 1
