@@ -4,7 +4,7 @@ import glob
 import requests
 
 from util.BaseIcon import BaseIcon
-from util.Vatiants import BaseVar
+from util.Variants import BaseVar
 from util.deleter import deleter
 
 from math import ceil, sqrt
