@@ -41,6 +41,7 @@ class Commands:
                     path = x1
                     image = requests.get(f'https://benbot.app/api/v1/assetProperties?path={path}&lang={self.language}').json()['export_properties'][0]
                     datas.append(BaseVar().main(image))
+                    print(Fore.BLUE + f"Generated image for {image['cosmetic_item']}..")
             row_n = len(datas)
             rowslen = ceil(sqrt(row_n))
             columnslen = round(sqrt(row_n))
