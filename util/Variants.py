@@ -10,8 +10,7 @@ from util.utilities import ImageUtil
 
 
 class BaseVar:
-    def __init__(self, data):
-        self.language = data.language
+    def __init__(self):
         self.primary_font = 'BurbankBigRegular-BlackItalic.otf'
         self.secondary_font = 'BurbankSmall-BlackItalic.otf'
 
