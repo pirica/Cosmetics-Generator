@@ -4,6 +4,7 @@ import glob
 import requests
 
 from util.BaseIcon import BaseIcon
+from util.Vatiants import BaseVar
 from util.deleter import deleter
 
 from math import ceil, sqrt
@@ -26,6 +27,45 @@ class Commands:
         print(Fore.YELLOW + "[1]" + Fore.GREEN + "Added autopost to Twitter!")
         print(Fore.YELLOW + "[2]" + Fore.GREEN + "Added box error")
         print(Fore.YELLOW + "[3]" + Fore.GREEN + "Added set search command")
+        
+    def NewVariants(self):
+        print(Fore.GREEN + "Generating new variants..")
+        res = requests.get(
+            'https://benbot.app/api/v1/files/added'
+        ).json()
+        if res.status_code == 200:
+            datas = []
+            for x1 in res:
+                if x1.startswith('FortniteGame/Content/Athena/Items/CosmeticVariantTokens/'):
+                    path = x1
+                    image = requests.get(f'https://benbot.app/api/v1/assetProperties?path={path}&lang=it').json()['export_properties'][0]
+                    datas.append(BaseVar().main(image))
+            row_n = len(datas)
+            rowslen = ceil(sqrt(row_n))
+            columnslen = round(sqrt(row_n))
+
+            mode = "RGB"
+            px = 512
+
+            rows = rowslen * px
+            columns = columnslen * px
+            image = Image.new(mode, (rows, columns))
+
+            i = 0
+            for card in datas:
+                image.paste(
+                    card,
+                    ((0 + ((i % rowslen) * card.width)),
+                    (0 + ((i // rowslen) * card.height)))
+                )
+
+                i += 1
+
+            image.save(f"images/newvariants.png")
+            deleter()
+        else:
+            print(Fore.RED + f"[ERROR] The api return a {res.status_code} error")
+            
 
     def NewCosmetics(self):
         print(Fore.GREEN + "Generating new cosmetics..")
@@ -37,14 +77,14 @@ class Commands:
             responce = res.json()['data']['items']
             start = time.time()
             count = 1
+            datas = []
             for data in responce:
                 percentage = (count/len(responce)) * 100
-                BaseIcon().main(data)
+                datas.append(BaseIcon().main(data))
                 print(Fore.BLUE + f"Generated image for {data['id']} -" + Fore.YELLOW + f" {count}/{len(responce)} - {round(percentage)}%")
                 count += 1
             if self.automerge:
                 print(Fore.BLUE + "Merging images...")
-                datas = [Image.open(i) for i in glob.glob(f'cache/*.png')]
                     
                 row_n = len(datas)
                 rowslen = ceil(sqrt(row_n))
@@ -108,14 +148,14 @@ class Commands:
             res = res.json()['data']
             start = time.time()
             count = 1
+            datas = []
             for data in res:
                 percentage = (count/len(res)) * 100
-                BaseIcon().main(data)
+                datas.append(BaseIcon().main(data))
                 print(Fore.BLUE + f"Generated image for {data['id']} -" + Fore.YELLOW + f" {count}/{len(res)} - {round(percentage)}%")
                 count += 1
             if self.automerge:
                 print(Fore.BLUE + "Merging images...")
-                datas = [Image.open(i) for i in glob.glob(f'cache/*.png')]
                     
                 row_n = len(datas)
                 rowslen = ceil(sqrt(row_n))
@@ -184,14 +224,14 @@ class Commands:
         if resp.status_code == 200:
             res = resp.json()['data']
             count = 1
+            datas = []
             for data in res:
                 percentage = (count/len(res)) * 100
-                BaseIcon().main(data)
+                datas.append(BaseIcon().main(data))
                 print(Fore.BLUE + f"Generated image for {data['id']} -" + Fore.YELLOW + f" {count}/{len(res)} - {round(percentage)}%")
                 count += 1
             if self.automerge:
                 print(Fore.BLUE + "Merging images...")
-                datas = [Image.open(i) for i in glob.glob(f'cache/*.png')]
                     
                 row_n = len(datas)
                 rowslen = ceil(sqrt(row_n))
