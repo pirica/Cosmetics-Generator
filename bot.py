@@ -15,7 +15,6 @@ try:
     from util.error import NoDigit
     from util.commands import Commands
     from util.twitter import Twitter
-    from util.Variants import BaseVar
 except ModuleNotFoundError as e:
     print(Fore.RED + "Error: " + e)
 
