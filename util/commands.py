@@ -30,10 +30,10 @@ class Commands:
         
     def NewVariants(self):
         print(Fore.GREEN + "Generating new variants..")
-        res = requests.get(
-            'https://benbot.app/api/v1/files/added'
-        ).json()
-        if res.status_code == 200:
+        try:
+            res = requests.get(
+                'https://benbot.app/api/v1/files/added'
+            ).json()
             datas = []
             for x1 in res:
                 if x1.startswith('FortniteGame/Content/Athena/Items/CosmeticVariantTokens/'):
@@ -63,8 +63,8 @@ class Commands:
 
             image.save(f"images/newvariants.png")
             deleter()
-        else:
-            print(Fore.RED + f"[ERROR] The api return a {res.status_code} error")
+        except:
+            print(Fore.RED + f"[ERROR] Api down!")
             
 
     def NewCosmetics(self):
