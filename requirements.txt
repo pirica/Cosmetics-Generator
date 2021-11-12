@@ -2,3 +2,4 @@ pillow
 colorama
 requests
 tk
+aiohttp
