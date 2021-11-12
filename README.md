@@ -31,6 +31,7 @@ Open `config.json` in your preferred text editor, fill the configurable values. 
  - Added **Box error**
  - Fixed some issues
  - Added **new features** command
+ - Added **new variants** command
 
 ## Credits
 
