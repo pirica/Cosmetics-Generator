@@ -15,6 +15,7 @@ try:
     from util.error import NoDigit
     from util.commands import Commands
     from util.twitter import Twitter
+    from util.Variants import BaseVar
 except ModuleNotFoundError as e:
     print(Fore.RED + "Error: " + e)
 
@@ -88,14 +89,15 @@ class main:
     def w(self) -> None:
         print(Fore.GREEN + f"Welcome {os.environ['username']} in this program!\nThis program is be able to generate new cosmetics, search for items and sets.\nBelow you have a list of features, choose!")
         print("")
-        print(Fore.GREEN + "\n- - - - - MENU - - - - -")
+        print(Fore.GREEN + "- - - - - MENU - - - - -")
         print("")
         print(Fore.YELLOW + "(1)" + Fore.GREEN + " - Generate newcosmetics")
         print(Fore.YELLOW + "(2)" + Fore.GREEN + " - Search for a cosmetics")
         print(Fore.YELLOW + "(3)" + Fore.GREEN + " - Search for a pak")
         print(Fore.YELLOW + "(4)" + Fore.GREEN + " - Search for a set")
-        print(Fore.YELLOW + "(5)" + Fore.GREEN + " - Merge images in cache folder")
-        print(Fore.YELLOW + "(6)" + Fore.GREEN + " - New Features")
+        print(Fore.YELLOW + "(5)" + Fore.GREEN + " - Generate all new variants")
+        print(Fore.YELLOW + "(6)" + Fore.GREEN + " - Merge images in cache folder")
+        print(Fore.YELLOW + "(7)" + Fore.GREEN + " - New Features")
 
 
 
@@ -111,8 +113,9 @@ class main:
             2: searchcosm.SearchCosmetic,
             3: pak.paksearch,
             4: searchcosm.set,
-            5: merge.merge,
-            6: features.feature
+            5: newcosm.NewVariants,
+            6: merge.merge,
+            7: features.feature
         }
 
         if isinstance(x, str):
