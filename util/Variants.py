@@ -6,7 +6,7 @@ import textwrap
 from PIL import Image, ImageChops, ImageDraw, ImageFont, ImageFilter, ImageChops
 from colorama import Fore
 
-from Utilities.utilities import ImageUtil
+from util.utilities import ImageUtil
 
 
 class BaseVar:
