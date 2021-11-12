@@ -16,7 +16,7 @@ try:
     from util.commands import Commands
     from util.twitter import Twitter
 except ModuleNotFoundError as e:
-    print(Fore.RED + "Error: " + e)
+    print(f"Error: {e}")
 
 window = tk.Tk()
 window.wm_withdraw()
