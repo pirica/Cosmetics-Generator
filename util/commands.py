@@ -38,7 +38,7 @@ class Commands:
             for x1 in res:
                 if x1.startswith('FortniteGame/Content/Athena/Items/CosmeticVariantTokens/'):
                     path = x1
-                    image = requests.get(f'https://benbot.app/api/v1/assetProperties?path={path}&lang=it').json()['export_properties'][0]
+                    image = requests.get(f'https://benbot.app/api/v1/assetProperties?path={path}&lang={self.language}').json()['export_properties'][0]
                     datas.append(BaseVar().main(image))
             row_n = len(datas)
             rowslen = ceil(sqrt(row_n))
