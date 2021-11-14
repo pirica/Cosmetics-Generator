@@ -28,7 +28,7 @@ class main:
     def __init__(self):
 
         try:
-            showinfo = random.randint(yes, no)
+            showinfo = random.randint("yes", "no")
             if showinfo == yes:
                 m = tkinter.messagebox.showinfo(title="Cosmetics Generator - Made by ᴅᴊʟᴏʀ3xᴢo", message=f"Hey {os.environ['username']}!\nRemember that you can follow me on Twitter (by clicking the 'ok' button below) and leave a star on Github!")
                 if m == True:
