@@ -8,6 +8,7 @@ try:
     import os
     import time    
     import webbrowser
+    import random
 
     from colorama import Fore
     from typing import Union
@@ -27,11 +28,13 @@ class main:
     def __init__(self):
 
         try:
-            m = tkinter.messagebox.showinfo(title="Cosmetics Generator - Made by ᴅᴊʟᴏʀ3xᴢo", message=f"Hey {os.environ['username']}!\nRemember that you can follow me on Twitter (by clicking the 'ok' button below) and leave a star on Github!")
-            if m == True:
-                webbrowser.open_new('https://twitter.com/djlorenzouasset')
+            showinfo = random.randint(yes, no)
+            if showinfo == yes:
+                m = tkinter.messagebox.showinfo(title="Cosmetics Generator - Made by ᴅᴊʟᴏʀ3xᴢo", message=f"Hey {os.environ['username']}!\nRemember that you can follow me on Twitter (by clicking the 'ok' button below) and leave a star on Github!")
+                if m == True:
+                    webbrowser.open_new('https://twitter.com/djlorenzouasset')
             else:
-                webbrowser.open_new('https://twitter.com/djlorenzouasset')
+                pass
             print(Fore.GREEN + "Loading settings..")
             config = json.loads(open("config.json").read()) # load configurations
             self.BoxIn = config.get('BoxIn')
