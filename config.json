@@ -1,0 +1,14 @@
+{
+    "language": "en",
+    "searchLanguage": "en",
+    "christmasIcon": "False",
+    "twitter": {                             
+        "enabled": false,  
+		"apiKey": "xxxx",
+		"apiSecret": "xxxx",
+		"accessToken": "xxxx",
+		"accessTokenSecret": "xxxx",
+        "newcosmeticsText": "",
+        "pakText": ""
+    }
+}
