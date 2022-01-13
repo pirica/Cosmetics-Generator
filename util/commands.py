@@ -19,7 +19,6 @@ class Commands:
     def __init__(self, data):
         self.language = data.language
         self.searchlanguage = data.searchlanguage
-        self.christmasIcon = data.ChristmasIcon
         self.twitter = data.twitter
         self.newtext = data.newcosmeticsText
         self.paktext = data.pakText
@@ -39,8 +38,7 @@ class Commands:
                 if x1.startswith('FortniteGame/Content/Athena/Items/CosmeticVariantTokens/'):
                     path = x1
                     image = requests.get(f'https://benbot.app/api/v1/assetProperties?path={path}&lang={self.language}').json()['export_properties'][0]
-                    data_snow = self.christmasIcon
-                    datas.append(BaseVar().main(image, data_snow))
+                    datas.append(BaseVar().main(image))
                     print(Fore.BLUE + f"Generated image for {image['cosmetic_item']}..")
             row_n = len(datas)
             rowslen = ceil(sqrt(row_n))
@@ -83,8 +81,7 @@ class Commands:
             datas = []
             for data in responce:
                 percentage = (count/len(responce)) * 100
-                data_snow = self.christmasIcon
-                datas.append(BaseIcon().main(data, data_snow))
+                datas.append(BaseIcon().main(data))
                 print(Fore.BLUE + f"Generated image for {data['id']} -" + Fore.YELLOW + f" {count}/{len(responce)} - {round(percentage)}%")
                 count += 1
             print(Fore.BLUE + "Merging images...")
@@ -131,8 +128,7 @@ class Commands:
         if res.status_code == 200:
             responce = res.json()['data']
             start = time.time()
-            data_snow = self.christmasIcon
-            image = BaseIcon().main(responce, data_snow)
+            image = BaseIcon().main(responce)
             print(Fore.BLUE + f"Generated image for {responce['id']}")
             print(Fore.GREEN + f"Generated in {round(time.time() - start, 2)} seconds")
             image.show()
@@ -168,8 +164,7 @@ class Commands:
             datas = []
             for data in res:
                 percentage = (count/len(res)) * 100
-                data_snow = self.christmasIcon
-                datas.append(BaseIcon().main(data, data_snow))
+                datas.append(BaseIcon().main(data))
                 print(Fore.BLUE + f"Generated image for {data['id']} -" + Fore.YELLOW + f" {count}/{len(res)} - {round(percentage)}%")
                 count += 1
             
@@ -246,8 +241,7 @@ class Commands:
             datas = []
             for data in res:
                 percentage = (count/len(res)) * 100
-                data_snow = self.christmasIcon
-                datas.append(BaseIcon().main(data, data_snow))
+                datas.append(BaseIcon().main(data))
                 print(Fore.BLUE + f"Generated image for {data['id']} -" + Fore.YELLOW + f" {count}/{len(res)} - {round(percentage)}%")
                 count += 1
             print(Fore.BLUE + "Merging images...")
