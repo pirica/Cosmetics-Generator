@@ -22,14 +22,6 @@ class BaseIcon:
         background = background.resize((512, 512), Image.ANTIALIAS)
         ret.paste(background)
 
-    def draw_christmas_background(_, ret: Image):
-        try:
-            christmas = Image.open('assets/images/default/fiocchi.png')
-        except Exception as e:
-            print(Fore.RED + f"{e}")
-        image = ImageUtil.ratio_resize(christmas, 512, 512)
-        ret.paste(image, image)
-
     def draw_foreground(_, ret: Image, icon):
         try:
             foreground = Image.open(f'assets/images/default/card_faceplate_{icon["rarity"]["value"]}.png')
@@ -183,16 +175,13 @@ class BaseIcon:
         cb = Image.open('assets/images/default/PlusSign.png')
         ret.paste(cb, cb)
 
-    def main(self, data, data_snow):
+    def main(self, data):
         icon = data
-        snow = data_snow
 
         height = 512
         ret = Image.new('RGB', (height, height))
         c = ImageDraw.Draw(ret)
         self.draw_background(ret, icon)
-        if snow == "True":
-            self.draw_christmas_background(ret)
         self.draw_preview_image(ret, icon)
         self.draw_foreground(ret, icon)
         if icon['name'] == "null":
