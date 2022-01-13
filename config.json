@@ -1,7 +1,6 @@
 {
     "language": "en",
     "searchLanguage": "en",
-    "christmasIcon": "False",
     "twitter": {                             
         "enabled": false,  
 		"apiKey": "xxxx",
