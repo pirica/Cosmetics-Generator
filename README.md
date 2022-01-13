@@ -17,7 +17,6 @@ Open `config.json` in your preferred text editor, fill the configurable values. 
 
 - `LANGUAGE`: Set the language for Fortnite Data ([Supported Languages](https://fortnite-api.com/documentation))
 - `SEARCHLANGUAGE`: Set the language for search in Fortnite Data
-- `christmasIcon`: Icon in **limited time** for Christmas
 
 **Sample Image:**
 
