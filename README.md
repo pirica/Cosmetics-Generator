@@ -26,8 +26,7 @@ Open `config.json` in your preferred text editor, fill the configurable values. 
 
 ## Features:
  
- - Added **news** command *(Only BR news)*
- - Added **Christmas** icon for a limited time
+In coming..
 
 ## Credits
 
