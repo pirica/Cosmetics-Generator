@@ -19,14 +19,6 @@ class BaseVar:
         background = background.resize((512, 512), Image.ANTIALIAS)
         ret.paste(background)
 
-    def draw_christmas_background(_, ret: Image):
-        try:
-            christmas = Image.open('assets/images/default/fiocchi.png')
-        except Exception as e:
-            print(f"{e}")
-        image = ImageUtil.ratio_resize(christmas, 512, 512)
-        ret.paste(image, image)
-
     def draw_foreground(_, ret: Image, rarity):
         try:
             foreground = Image.open(f'assets/images/default/card_faceplate_{rarity}.png')
@@ -159,9 +151,8 @@ class BaseVar:
         cb = Image.open('assets/images/default/PlusSign.png')
         ret.paste(cb, cb)
 
-    def main(self, data, snow):
+    def main(self, data):
         icon = data
-        snow1 = snow
         
         try:
             rarity = icon['Rarity']
@@ -174,8 +165,6 @@ class BaseVar:
         ret = Image.new('RGB', (height, height))
         c = ImageDraw.Draw(ret)
         self.draw_background(ret, rarity)
-        if snow1 == "True":
-            self.draw_christmas_background(ret)
         self.draw_preview_image(ret, icon)
         self.draw_foreground(ret, rarity)
         self.draw_display_name(ret, c, icon)
