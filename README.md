@@ -19,7 +19,7 @@ Open `config.json` in your preferred text editor, fill the configurable values. 
 - `searchLanguage`: Set the language for search in Fortnite Data
 - `DiscordPresence`: Show the program rich presence on your profile!
 
-<p align="right">
+<p align="left">
     <img src="https://cdn.discordapp.com/attachments/933398342816383076/968905801622257724/unknown.png"  draggable="false">
 </p>
 
