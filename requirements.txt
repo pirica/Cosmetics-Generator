@@ -1,0 +1,7 @@
+colorama
+datetime
+pypresence
+pillow
+requests
+tweepy
+aiohttp

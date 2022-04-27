@@ -1,0 +1,14 @@
+{
+    "language": "en",
+    "searchLanguage": "en",
+    "DiscordPresence": true,
+    "twitter": {
+        "enabled": false,
+		"apiKey": "xxxx",
+		"apiSecret": "xxxx",
+		"accessToken": "xxxx",
+		"accessTokenSecret": "xxxx",
+        "newCosmeticsText": "",
+        "newPakText": ""
+    }
+}
