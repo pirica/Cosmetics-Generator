@@ -20,8 +20,9 @@ class Commands:
         self.language = data.language
         self.searchlanguage = data.searchLanguage
         self.twitter = data.twitter
-        self.newtext = data.newcosmeticsText
-        self.paktext = data.newpakText
+        if self.twitter:
+            self.newText = data.newcosmeticsText
+            self.pakText = data.newpakText
         self.discord = data.discord
         self.start = data.start_time
         if self.discord:
