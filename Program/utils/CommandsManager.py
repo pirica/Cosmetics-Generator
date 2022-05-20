@@ -131,8 +131,8 @@ class Commands:
             if self.twitter != False:
                 try:
                     self.twitter.update_status_with_media(
-                        "images/newcosmetics.jpg",
-                        status=self.newText
+                        self.newText,
+                        "images/newcosmetics.jpg"
                     )
                 except Exception as exception:
                     print(Fore.RED + f"Failed to tweet the newcosmetics image!\n{exception}")
@@ -248,8 +248,8 @@ class Commands:
             if self.twitter != False:
                 try:
                     self.twitter.update_status_with_media(
-                        f"images/pak {ask}.jpg",
-                        status=self.pakText
+                        self.pakText,
+                        f"images/pak {ask}.jpg"
                     )
                 except Exception as exception:
                     print(Fore.RED + f"Failed to tweet the pak image!\n{exception}")
