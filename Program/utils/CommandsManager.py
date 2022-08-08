@@ -6,7 +6,6 @@ import os
 import shutil
 
 from utils.BaseIcon import BaseIcon
-from utils.Variants import BaseVar
 from utils.newsgen import NewsImage
 
 from math import ceil, sqrt
@@ -27,58 +26,7 @@ class Commands:
         self.start = data.start_time
         if self.discord:
             self.rpc = data.rpc
-        
-    def NewVariants(self):
-        print(Fore.GREEN + "Generating new variants..")
-        try:
-            if self.discord:
-                self.rpc.update(
-                    details=f"Playing v{requests.get('https://benbot.app/api/v1/status').json()['currentFortniteVersion'].replace('++Fortnite+Release-', '').split('-')[0]}",
-                    state="Generating new variants",
-                    large_image="app_image",
-                    large_text="Cosmetic Generator",
-                    small_text="User access",
-                    start=int(self.start),
-                    small_image="user_access",
-                    buttons=[{"label": "Download", "url": "https://github.com/djlorenzouasset/Cosmetics-Generator"}]
-                )
-            res = requests.get(
-                'https://benbot.app/api/v1/files/added'
-            ).json()
-            datas = []
-            for x1 in res:
-                if x1.startswith('FortniteGame/Content/Athena/Items/CosmeticVariantTokens/'):
-                    path = x1
-                    image = requests.get(f'https://benbot.app/api/v1/assetProperties?path={path}&lang={self.language}').json()['export_properties'][0]
-                    datas.append(BaseVar().main(image))
-                    print(Fore.BLUE + f"Generated image for {image['cosmetic_item']}..")
-            row_n = len(datas)
-            rowslen = ceil(sqrt(row_n))
-            columnslen = round(sqrt(row_n))
-
-            mode = "RGB"
-            px = 512
-
-            rows = rowslen * px
-            columns = columnslen * px
-            image = Image.new(mode, (rows, columns))
-
-            i = 0
-            for card in datas:
-                image.paste(
-                    card,
-                    ((0 + ((i % rowslen) * card.width)),
-                    (0 + ((i // rowslen) * card.height)))
-                )
-
-                i += 1
-
-            image.save(f"images/newvariants.png")   
-            shutil.rmtree('cache')
-            os.makedirs('cache')
-        except:
-            print(Fore.RED + f"[ERROR] Api down!")
-            
+           
 
     def NewCosmetics(self):
         print(Fore.GREEN + "Generating new cosmetics..")
@@ -89,7 +37,7 @@ class Commands:
         if res.status_code == 200:
             if self.discord:
                 self.rpc.update(
-                    details=f"Playing v{requests.get('https://benbot.app/api/v1/status').json()['currentFortniteVersion'].replace('++Fortnite+Release-', '').split('-')[0]}",
+                    details=f"Playing v{requests.get('https://fortnitecentral.gmatrixgames.ga/api/v1/aes').json()['version']}",
                     state="Generating new cosmetics",
                     large_image="app_image",
                     large_text="Cosmetic Generator",
@@ -146,7 +94,7 @@ class Commands:
     def SearchCosmetic(self):
         if self.discord:
             self.rpc.update(
-                details=f"Playing v{requests.get('https://benbot.app/api/v1/status').json()['currentFortniteVersion'].replace('++Fortnite+Release-', '').split('-')[0]}",
+                details=f"Playing v{requests.get('https://fortnitecentral.gmatrixgames.ga/api/v1/aes').json()['version']}",
                 state="Searching a cosmetic",
                 large_image="app_image",
                 large_text="Cosmetic Generator",
@@ -178,7 +126,7 @@ class Commands:
         if res.status_code == 200:
             if self.discord:
                 self.rpc.update(
-                    details=f"Playing v{requests.get('https://benbot.app/api/v1/status').json()['currentFortniteVersion'].replace('++Fortnite+Release-', '').split('-')[0]}",
+                    details=f"Playing v{requests.get('https://fortnitecentral.gmatrixgames.ga/api/v1/aes').json()['version']}",
                     state="Generating news br",
                     large_image="app_image",
                     large_text="Cosmetic Generator",
@@ -200,7 +148,7 @@ class Commands:
     def paksearch(self):
         if self.discord:
             self.rpc.update(
-                details=f"Playing v{requests.get('https://benbot.app/api/v1/status').json()['currentFortniteVersion'].replace('++Fortnite+Release-', '').split('-')[0]}",
+                details=f"Playing v{requests.get('https://fortnitecentral.gmatrixgames.ga/api/v1/aes').json()['version']}",
                 state="Searching a pak",
                 large_image="app_image",
                 large_text="Cosmetic Generator",
@@ -263,7 +211,7 @@ class Commands:
     def merge(self):
         if self.discord:
             self.rpc.update(
-                details=f"Playing v{requests.get('https://benbot.app/api/v1/status').json()['currentFortniteVersion'].replace('++Fortnite+Release-', '').split('-')[0]}",
+                details=f"Playing v{requests.get('https://fortnitecentral.gmatrixgames.ga/api/v1/aes').json()['version']}",
                 state="Merging images",
                 large_image="app_image",
                 large_text="Cosmetic Generator",
@@ -305,7 +253,7 @@ class Commands:
         if resp.status_code == 200:
             if self.discord:
                 self.rpc.update(
-                    details=f"Playing v{requests.get('https://benbot.app/api/v1/status').json()['currentFortniteVersion'].replace('++Fortnite+Release-', '').split('-')[0]}",
+                    details=f"Playing v{requests.get('https://fortnitecentral.gmatrixgames.ga/api/v1/aes').json()['version']}",
                     state="Searching sets",
                     large_image="app_image",
                     large_text="Cosmetic Generator",
