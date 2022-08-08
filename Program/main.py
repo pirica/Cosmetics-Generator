@@ -42,7 +42,7 @@ class Program:
                 )
                 self.rpc.connect()
                 self.rpc.update(
-                    details=f"Playing v{requests.get('https://benbot.app/api/v1/status').json()['currentFortniteVersion'].replace('++Fortnite+Release-', '').split('-')[0]}",
+                    details=f"Playing v{requests.get('https://fortnitecentral.gmatrixgames.ga/api/v1/aes').json()['version']",
                     state="In menu",
                     large_image="app_image",
                     large_text="Cosmetic Generator",
@@ -108,8 +108,7 @@ class Program:
         print(Fore.YELLOW + "3) -" + Fore.GREEN + " Search a pak and generate all cosmetics in it")
         print(Fore.YELLOW + "4) -" + Fore.GREEN + " Search for a set by name")
         print(Fore.YELLOW + "5) -" + Fore.GREEN + " Generate current news (br)")
-        print(Fore.YELLOW + "6) -" + Fore.GREEN + " Generate all new variants of the latest patch")
-        print(Fore.YELLOW + "7) -" + Fore.GREEN + " Merge images")
+        print(Fore.YELLOW + "6) -" + Fore.GREEN + " Merge images")
 
     def inputs(self, x: Union[str, int, None]):
         newcosm = Commands(self)
@@ -124,8 +123,7 @@ class Program:
             3: pak.paksearch,
             4: searchcosm.set,
             5: news.NewsGenerator,
-            6: newcosm.NewVariants,
-            7: merge.merge
+            6: merge.merge
         }
 
         if isinstance(x, str):
