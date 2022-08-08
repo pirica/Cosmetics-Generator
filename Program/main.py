@@ -42,7 +42,7 @@ class Program:
                 )
                 self.rpc.connect()
                 self.rpc.update(
-                    details=f"Playing v{requests.get('https://fortnitecentral.gmatrixgames.ga/api/v1/aes').json()['version']",
+                    details=f"Playing v{requests.get('https://fortnitecentral.gmatrixgames.ga/api/v1/aes').json()['version']}",
                     state="In menu",
                     large_image="app_image",
                     large_text="Cosmetic Generator",
