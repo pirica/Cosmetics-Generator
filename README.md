@@ -19,14 +19,10 @@ Open `config.json` in your preferred text editor, fill the configurable values. 
 - `searchLanguage`: Set the language for search in Fortnite Data
 - `DiscordPresence`: Show the program rich presence on your profile!
 
-<p align="left">
-    <img src="https://cdn.discordapp.com/attachments/933398342816383076/968905801622257724/unknown.png"  draggable="false">
-</p>
-
 ## **Sample Cosmetic Image:**
 
 <p align="left">
-    <img src="https://cdn.discordapp.com/attachments/797918649163317310/913138149071388672/CID_A_266_Athena_Commando_F_Grandeur_9CO1M.png" width="512" draggable="false">
+    <img src="https://cdn.discordapp.com/attachments/1002661015533650041/1021589815457747014/Character_Meteorwomen_Alt.png" width="512" draggable="false">
 </p>
 
 
