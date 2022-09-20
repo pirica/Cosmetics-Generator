@@ -254,6 +254,7 @@ class Commands:
                     ((0 + ((i % rowslen) * card.width)),
                     (0 + ((i // rowslen) * card.height)))
                 )
+                i += 1
             image.save(f'images/{ask}.jpg')
             image.show()
             shutil.rmtree('cache')
