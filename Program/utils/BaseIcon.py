@@ -183,8 +183,6 @@ class BaseIcon:
         self.draw_background(ret, icon)
         self.draw_preview_image(ret, icon)
         self.draw_foreground(ret, icon)
-        if icon['name'] == "null":
-            return 0
         self.draw_display_name(ret, c, icon)
         self.draw_description(ret, c, icon)
         if icon['introduction']:

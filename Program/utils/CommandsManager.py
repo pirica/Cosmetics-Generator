@@ -43,9 +43,12 @@ class Commands:
             datas = []
             for data in responce:
                 percentage = (count/len(responce)) * 100
-                datas.append(BaseIcon().main(data))
-                print(Fore.BLUE + f"Generated image for {data['id']} -" + Fore.YELLOW + f" {count}/{len(responce)} - {round(percentage)}%")
-                count += 1
+                if data['name'] == 'null':
+                    print('Null name passed')
+                else:
+                    datas.append(BaseIcon().main(data))
+                    print(Fore.BLUE + f"Generated image for {data['id']} -" + Fore.YELLOW + f" {count}/{len(responce)} - {round(percentage)}%")
+                    count += 1
             print(Fore.BLUE + "Merging images...")
                     
             row_n = len(datas)
@@ -60,14 +63,11 @@ class Commands:
             i = 0
             
             for card in datas:
-                if type(card) == int:
-                    pass
-                else:
-                    image.paste(
-                        card,
-                        ((0 + ((i % rowslen) * card.width)),
-                        (0 + ((i // rowslen) * card.height)))
-                    )
+                image.paste(
+                    card,
+                    ((0 + ((i % rowslen) * card.width)),
+                    (0 + ((i // rowslen) * card.height)))
+                )
                 i += 1
             image.save('images/newcosmetics.jpg')
             image.show()
@@ -142,9 +142,12 @@ class Commands:
             datas = []
             for data in res:
                 percentage = (count/len(res)) * 100
-                datas.append(BaseIcon().main(data))
-                print(Fore.BLUE + f"Generated image for {data['id']} -" + Fore.YELLOW + f" {count}/{len(res)} - {round(percentage)}%")
-                count += 1
+                if data['name'] == 'null':
+                    print('Null name passed')
+                else:
+                    datas.append(BaseIcon().main(data))
+                    print(Fore.BLUE + f"Generated image for {data['id']} -" + Fore.YELLOW + f" {count}/{len(res)} - {round(percentage)}%")
+                    count += 1
             
             print(Fore.BLUE + "Merging images...")
                     
@@ -164,6 +167,7 @@ class Commands:
                     ((0 + ((i % rowslen) * card.width)),
                     (0 + ((i // rowslen) * card.height)))
                 )
+                i += 1
             image.save(f'images/pak {ask}.jpg')
             image.show()
             if self.twitter != False:
@@ -175,8 +179,8 @@ class Commands:
                 except Exception as exception:
                     print(Fore.RED + f"Failed to tweet the pak image!\n{exception}")
             print(Fore.GREEN + f"Generated in {round(time.time() - start, 2)} seconds")
-            shutil.rmtree('cache')
-            os.makedirs('cache')
+            #shutil.rmtree('cache')
+            #os.makedirs('cache')
         elif res.status_code != 200:
             print(Fore.RED + f"[ERROR] The api return a {res.status_code} error")
 
@@ -226,9 +230,12 @@ class Commands:
             datas = []
             for data in res:
                 percentage = (count/len(res)) * 100
-                datas.append(BaseIcon().main(data))
-                print(Fore.BLUE + f"Generated image for {data['id']} -" + Fore.YELLOW + f" {count}/{len(res)} - {round(percentage)}%")
-                count += 1
+                if data['name'] == 'null':
+                    print('Null name passed')
+                else:
+                    datas.append(BaseIcon().main(data))
+                    print(Fore.BLUE + f"Generated image for {data['id']} -" + Fore.YELLOW + f" {count}/{len(res)} - {round(percentage)}%")
+                    count += 1
             print(Fore.BLUE + "Merging images...")
                     
             row_n = len(datas)
@@ -242,14 +249,11 @@ class Commands:
             image = Image.new(mode, (rows, columns))
             i = 0
             for card in datas:
-                if type(card) == int:
-                    pass
-                else:
-                    image.paste(
-                        card,
-                        ((0 + ((i % rowslen) * card.width)),
-                        (0 + ((i // rowslen) * card.height)))
-                    )
+                image.paste(
+                    card,
+                    ((0 + ((i % rowslen) * card.width)),
+                    (0 + ((i // rowslen) * card.height)))
+                )
             image.save(f'images/{ask}.jpg')
             image.show()
             shutil.rmtree('cache')
