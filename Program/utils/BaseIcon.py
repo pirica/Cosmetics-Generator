@@ -49,7 +49,7 @@ class BaseIcon:
         if not image and os.path.isfile('assets/TBD.png'):
             image = Image.open("assets/TBD.png")
         else:
-            image = Util.download(image)
+            image = Util.download_image(image)
             if not image: 
                 return 0
 

@@ -1,29 +1,27 @@
-import aiohttp
+import requests
 
 from PIL import Image
-from io import BytesIO
-
 
 class Util:
 
     @staticmethod
-    async def center_x(foregroundWidth: int, backgroundWidth: int, distanceTop: int = 0):
+    def download_image(url):
+        res = requests.get(url, stream=True)
+        if res.status_code == 200:
+            return Image.open(res.raw).convert('RGBA')
+    
+    @staticmethod
+    def center_x(foreground_width: int, background_width: int, height: int):
+        """Return the tuple necessary for horizontal centering and an optional vertical distance."""
 
-        return int(backgroundWidth / 2) - int(foregroundWidth / 2), distanceTop
+        return int(background_width / 2) - int(foreground_width / 2), height
 
     @staticmethod
-    async def ratio_resize(image: Image.Image, maxWidth: int, maxHeight: int):
+    def ratio_resize(image: Image.Image, max_width: int, max_height: int):
+        """Resize and return the provided image while maintaining aspect ratio."""
 
-        ratio = max(maxWidth / image.width, maxHeight / image.height)
+        ratio = max(max_width / image.width, max_height / image.height)
 
         return image.resize(
             (int(image.width * ratio), int(image.height * ratio)), Image.ANTIALIAS
         )
-
-    @staticmethod
-    async def download(url: str):
-
-        async with aiohttp.ClientSession(auto_decompress=False) as session:
-            async with session.get(url) as response:
-                if response.status == 200:
-                    return Image.open(BytesIO(await response.read())).convert("RGBA")

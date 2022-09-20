@@ -20,7 +20,7 @@ class NewsImage:
         draw = ImageDraw.Draw(background)
 
         # Image
-        news_image = Util.download(icon['image'])
+        news_image = Util.download_image(icon['image'])
         if not news_image:
             return background
 
