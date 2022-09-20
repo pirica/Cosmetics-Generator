@@ -39,7 +39,7 @@ class Commands:
         if res.status_code == 200:
             responce = res.json()['data']['items']
             start = time.time()
-            count = 1
+            count = 0
             datas = []
             for data in responce:
                 percentage = (count/len(responce)) * 100
@@ -58,12 +58,16 @@ class Commands:
             columns = columnslen * px
             image = Image.new(mode, (rows, columns))
             i = 0
+            
             for card in datas:
-                image.paste(
-                    card,
-                    ((0 + ((i % rowslen) * card.width)),
-                    (0 + ((i // rowslen) * card.height)))
-                )
+                if type(card) == int:
+                    pass
+                else:
+                    image.paste(
+                        card,
+                        ((0 + ((i % rowslen) * card.width)),
+                        (0 + ((i // rowslen) * card.height)))
+                    )
                 i += 1
             image.save('images/newcosmetics.jpg')
             image.show()
@@ -155,12 +159,14 @@ class Commands:
             image = Image.new(mode, (rows, columns))
             i = 0
             for card in datas:
-                image.paste(
-                    card,
-                    ((0 + ((i % rowslen) * card.width)),
-                    (0 + ((i // rowslen) * card.height)))
-                )
-                i += 1
+                if type(card) == int:
+                    pass
+                else:
+                    image.paste(
+                        card,
+                        ((0 + ((i % rowslen) * card.width)),
+                        (0 + ((i // rowslen) * card.height)))
+                    )
             image.save(f'images/pak {ask}.jpg')
             image.show()
             if self.twitter != False:
@@ -239,12 +245,14 @@ class Commands:
             image = Image.new(mode, (rows, columns))
             i = 0
             for card in datas:
-                image.paste(
-                    card,
-                    ((0 + ((i % rowslen) * card.width)),
-                    (0 + ((i // rowslen) * card.height)))
-                )
-                i += 1
+                if type(card) == int:
+                    pass
+                else:
+                    image.paste(
+                        card,
+                        ((0 + ((i % rowslen) * card.width)),
+                        (0 + ((i // rowslen) * card.height)))
+                    )
             image.save(f'images/{ask}.jpg')
             image.show()
             shutil.rmtree('cache')
