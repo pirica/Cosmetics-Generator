@@ -2,7 +2,7 @@ import textwrap
 
 from PIL import Image, ImageDraw, ImageFont
 
-from utils.utilities import ImageUtil
+from utils.utilities import Util
 
 TitleColor = (255, 255, 255)
 DescriptionColor = (51, 236, 254)
@@ -20,7 +20,7 @@ class NewsImage:
         draw = ImageDraw.Draw(background)
 
         # Image
-        news_image = ImageUtil.download_image(icon['image'])
+        news_image = Util.download(icon['image'])
         if not news_image:
             return background
 

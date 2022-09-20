@@ -3,9 +3,8 @@ import textwrap
 import colorama
 
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
-from colorama import Fore
 
-from utils.utilities import ImageUtil
+from utils.utilities import Util
 
 
 class BaseIcon:
@@ -50,11 +49,11 @@ class BaseIcon:
         if not image and os.path.isfile('assets/TBD.png'):
             image = Image.open("assets/TBD.png")
         else:
-            image = ImageUtil.download_image(image)
+            image = Util.download(image)
             if not image: 
                 return 0
 
-        image = ImageUtil.ratio_resize(image, 512, 512)
+        image = Util.ratio_resize(image, 512, 512)
         ret.paste(image, image)
 
     def draw_display_name(self, ret, c, icon):

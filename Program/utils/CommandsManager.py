@@ -19,33 +19,24 @@ class Commands:
         self.language = data.language
         self.searchlanguage = data.searchLanguage
         self.twitter = data.twitter
+        self.discord = data.discord
+        self.rpc = data.rpc
+
         if self.twitter:
             self.newText = data.newcosmeticsText
-            self.pakText = data.newpakText
-        self.discord = data.discord
-        self.start = data.start_time
-        if self.discord:
-            self.rpc = data.rpc
-           
+            self.pakText = data.newpakText   
 
     def NewCosmetics(self):
+        if self.discord:
+            self.rpc.update(
+                state="Generating NewCosmetics"
+            )
         print(Fore.GREEN + "Generating new cosmetics..")
         res = requests.get(
             f'https://fortnite-api.com/v2/cosmetics/br/new?language={self.language}'
         )
         responce = res.json()
         if res.status_code == 200:
-            if self.discord:
-                self.rpc.update(
-                    details=f"Playing v{requests.get('https://fortnitecentral.gmatrixgames.ga/api/v1/aes').json()['version']}",
-                    state="Generating new cosmetics",
-                    large_image="app_image",
-                    large_text="Cosmetic Generator",
-                    small_text="User access",
-                    start=int(self.start),
-                    small_image="user_access",
-                    buttons=[{"label": "Download", "url": "https://github.com/djlorenzouasset/Cosmetics-Generator"}]
-                )
             responce = res.json()['data']['items']
             start = time.time()
             count = 1
@@ -94,14 +85,7 @@ class Commands:
     def SearchCosmetic(self):
         if self.discord:
             self.rpc.update(
-                details=f"Playing v{requests.get('https://fortnitecentral.gmatrixgames.ga/api/v1/aes').json()['version']}",
-                state="Searching a cosmetic",
-                large_image="app_image",
-                large_text="Cosmetic Generator",
-                small_text="User access",
-                start=int(self.start),
-                small_image="user_access",
-                buttons=[{"label": "Download", "url": "https://github.com/djlorenzouasset/Cosmetics-Generator"}]
+                state="Searching for a cosmetic"
             )
         ask = input(Fore.GREEN + 'What cosmetic do you want to grab? ')
         res = requests.get(
@@ -120,21 +104,14 @@ class Commands:
             print(Fore.RED + "Api down!")
 
     def NewsGenerator(self):
+        if self.discord:
+            self.rpc.update(
+                state="Generating News"
+            )
         res = requests.get(
             f'https://fortnite-api.com/v2/news/br?language={self.language}'
         )       
         if res.status_code == 200:
-            if self.discord:
-                self.rpc.update(
-                    details=f"Playing v{requests.get('https://fortnitecentral.gmatrixgames.ga/api/v1/aes').json()['version']}",
-                    state="Generating news br",
-                    large_image="app_image",
-                    large_text="Cosmetic Generator",
-                    small_text="User access",
-                    start=int(self.start),
-                    small_image="user_access",
-                    buttons=[{"label": "Download", "url": "https://github.com/djlorenzouasset/Cosmetics-Generator"}]
-                )
             res = res.json()['data']['motds']
             for data in res:
                 NewsImage().generate_image(data)
@@ -148,14 +125,7 @@ class Commands:
     def paksearch(self):
         if self.discord:
             self.rpc.update(
-                details=f"Playing v{requests.get('https://fortnitecentral.gmatrixgames.ga/api/v1/aes').json()['version']}",
-                state="Searching a pak",
-                large_image="app_image",
-                large_text="Cosmetic Generator",
-                small_text="User access",
-                start=int(self.start),
-                small_image="user_access",
-                buttons=[{"label": "Download", "url": "https://github.com/djlorenzouasset/Cosmetics-Generator"}]
+                state="Searching for a pak"
             )    
         ask = input(Fore.GREEN + 'What number pak do you want to grab? ')
         res = requests.get(
@@ -211,14 +181,7 @@ class Commands:
     def merge(self):
         if self.discord:
             self.rpc.update(
-                details=f"Playing v{requests.get('https://fortnitecentral.gmatrixgames.ga/api/v1/aes').json()['version']}",
-                state="Merging images",
-                large_image="app_image",
-                large_text="Cosmetic Generator",
-                small_text="User access",
-                start=int(self.start),
-                small_image="user_access",
-                buttons=[{"label": "Download", "url": "https://github.com/djlorenzouasset/Cosmetics-Generator"}]
+                state="Merging images"
             )
         print(Fore.BLUE + "Merging images..")
         datas = [Image.open(i) for i in glob.glob(f'cache/*.png')]
@@ -245,23 +208,16 @@ class Commands:
         os.makedirs('cache')
 
     def set(self):
+        if self.discord:
+            self.rpc.update(
+                state="Searching for a set"
+            )
         ask = input(Fore.GREEN + "What set you want to grab? ")
         resp = requests.get(
             f'https://fortnite-api.com/v2/cosmetics/br/search/all?set={ask}&language={self.language}&searchLanguage={self.searchlanguage}'
         )
 
         if resp.status_code == 200:
-            if self.discord:
-                self.rpc.update(
-                    details=f"Playing v{requests.get('https://fortnitecentral.gmatrixgames.ga/api/v1/aes').json()['version']}",
-                    state="Searching sets",
-                    large_image="app_image",
-                    large_text="Cosmetic Generator",
-                    small_text="User access",
-                    start=int(self.start),
-                    small_image="user_access",
-                    buttons=[{"label": "Download", "url": "https://github.com/djlorenzouasset/Cosmetics-Generator"}]
-                )
             res = resp.json()['data']
             count = 1
             datas = []
