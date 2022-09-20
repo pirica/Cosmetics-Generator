@@ -159,14 +159,11 @@ class Commands:
             image = Image.new(mode, (rows, columns))
             i = 0
             for card in datas:
-                if type(card) == int:
-                    pass
-                else:
-                    image.paste(
-                        card,
-                        ((0 + ((i % rowslen) * card.width)),
-                        (0 + ((i // rowslen) * card.height)))
-                    )
+                image.paste(
+                    card,
+                    ((0 + ((i % rowslen) * card.width)),
+                    (0 + ((i // rowslen) * card.height)))
+                )
             image.save(f'images/pak {ask}.jpg')
             image.show()
             if self.twitter != False:
