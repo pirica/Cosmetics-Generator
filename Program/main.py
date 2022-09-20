@@ -2,56 +2,46 @@ import tkinter as tk
 import tkinter.messagebox
 import json 
 import os
-import time 
 import colorama
-import requests
 
 from colorama import Fore
 from typing import Union
-from datetime import datetime
-from pypresence import Presence
 
 from utils.TwitterManager import TwitterClient
 from utils.CommandsManager import Commands
 from utils.Errors import NoDigit
-
+from utils.Presence import RPC
 
 window = tk.Tk()
 window.wm_withdraw()
 colorama.init(autoreset=True)
-client_id = "968816560309436457"
 
 class Program:
     def __init__(self):
-        self.start_time = datetime.now().timestamp()
         print(Fore.CYAN + "Cosmetics Generator made by ᴅᴊʟᴏʀ3xᴢᴏ\n" + Fore.GREEN + "Loading settings, please wait..")
         try:
             config = json.loads(open("configs.json").read())
             if not os.path.isdir('images'):
                 os.makedirs('images')
             if not os.path.isdir('cache'):
-                os.makedirs('cache')          
+                os.makedirs('cache')    
+      
             self.language = config.get('language')
             self.searchLanguage = config.get('searchLanguage')
             self.newcosmeticsText = config.get('newCosmeticsText')
             self.newpakText = config.get('newPakText')
-            if config.get('DiscordPresence'): 
-                self.discord = True
-                self.rpc = Presence(
-                    client_id=client_id
-                )
+            self.discord = True
+
+            self.rpc = RPC()
+
+            if config.get('DiscordPresence'):
                 self.rpc.connect()
                 self.rpc.update(
-                    details=f"Playing v{requests.get('https://fortnitecentral.gmatrixgames.ga/api/v1/aes').json()['version']}",
-                    state="In menu",
-                    large_image="app_image",
-                    large_text="Cosmetic Generator",
-                    small_text="User access",
-                    start=int(self.start_time),
-                    small_image="user_access",
-                    buttons=[{"label": "Download", "url": "https://github.com/djlorenzouasset/Cosmetics-Generator"}]
+                    state="In menu"
                 )
-            else: self.discord = False
+            else: 
+                self.discord = False
+
             twitter = config.get('twitter', {})
             self.twitter = None
             if twitter.get('enabled'):
@@ -72,13 +62,7 @@ class Program:
                 exit()
             else:
                 exit()
-        except FileNotFoundError as e:
-            error = tkinter.messagebox.showerror(title="Error",message=f"An error accured:\n{e}", parent=window)
-            if error == True:
-                exit()
-            else:
-                exit()
-        time.sleep(3)
+
         os.system('cls')
 
     def get_command_number(self):
