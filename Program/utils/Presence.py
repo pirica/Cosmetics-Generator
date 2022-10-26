@@ -5,7 +5,7 @@ from datetime import datetime
 
 class RPC(Presence):
     def __init__(self):
-        self.client_id = 968816560309436457
+        self.client_id = 968816560309436457 # if this client don't work, restart the program for fix the issue.
         self.start = datetime.now().timestamp()
         self.name = "Cosmetic Generator"
         self.access = "user_access"
