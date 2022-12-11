@@ -9,8 +9,16 @@ class RPC(Presence):
         self.start = datetime.now().timestamp()
         self.name = "Cosmetic Generator"
         self.access = "user_access"
-        self.buttons = [{"label": "Download", "url": "https://github.com/djlorenzouasset/Cosmetics-Generator"}]
-        self.image = "app_image"
+        self.buttons = [
+            {
+                "label": "Download", 
+                "url": "https://github.com/djlorenzouasset/Cosmetics-Generator"
+            },
+            {
+                "label": "Discord Server",
+                "url": "https://discord.gg/X97U6PFGHc"
+        ]
+        self.image = "rift"
         self.version = requests.get('https://fortnitecentral.gmatrixgames.ga/api/v1/aes').json()['version']
         self.details = f"Playing v{self.version}"
 
