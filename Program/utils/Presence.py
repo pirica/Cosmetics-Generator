@@ -17,6 +17,7 @@ class RPC(Presence):
             {
                 "label": "Discord Server",
                 "url": "https://discord.gg/X97U6PFGHc"
+            }
         ]
         self.image = "rift"
         self.version = requests.get('https://fortnitecentral.gmatrixgames.ga/api/v1/aes').json()['version']
