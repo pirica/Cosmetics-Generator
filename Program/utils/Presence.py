@@ -16,11 +16,11 @@ class RPC(Presence):
             },
             {
                 "label": "Discord Server",
-                "url": "https://discord.gg/X97U6PFGHc"
+                "url": "https://discord.gg/BreVGmCdef"
             }
         ]
         self.image = "rift"
-        self.version = requests.get('https://fortnitecentral.gmatrixgames.ga/api/v1/aes').json()['version']
+        self.version = requests.get('https://fortnitecentral.genxgames.gg/api/v1/aes').json()['version']
         self.details = f"Playing v{self.version}"
 
         super().__init__(
