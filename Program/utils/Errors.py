@@ -1,10 +1,8 @@
 class Error(Exception):
-    """Return a simple error"""
+    return
 
 
 class NoDigit(Error):
-    """Raise if the string is not digit"""
-
-    def __init__(self, message='No numbers provided') -> None:
+    def __init__(self, message='[ERROR] No numbers provided') -> None:
         self.message = message
         super().__init__(self.message)
