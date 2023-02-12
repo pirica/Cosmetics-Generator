@@ -1,5 +1,5 @@
 class Error(Exception):
-    return
+    pass
 
 
 class NoDigit(Error):
