@@ -82,7 +82,7 @@ class Commands:
             print(Fore.GREEN + f"Generated in {round(time.time() - start, 2)} seconds")
             shutil.rmtree('cache')
             os.makedirs('cache')
-        elif responce['status'] != 200:
+        elif res.status_code != 200:
             print(Fore.RED + f"[ERROR] The api return a {res['status']} error")
 
 
