@@ -18,7 +18,7 @@ class BaseIcon:
             background = Image.open(f'assets/images/default/card_background_{icon["rarity"]["value"]}.png')
         except FileNotFoundError:
             background = Image.open(f'assets/images/default/card_background_common.png')
-        background = background.resize((512, 512), Image.ANTIALIAS)
+        background = background.resize((512, 512), Image.LANCZOS)
         ret.paste(background)
 
     def draw_foreground(_, ret: Image, icon):

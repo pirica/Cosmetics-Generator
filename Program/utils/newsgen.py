@@ -25,7 +25,7 @@ class NewsImage:
             return background
 
         if news_image.width != 1280 or news_image.height != 720:
-            news_image = news_image.resize((1280, 720), Image.ANTIALIAS)
+            news_image = news_image.resize((1280, 720), Image.LANCZOS)
         background.paste(news_image, (0, 0))
 
         # Title

@@ -23,5 +23,5 @@ class Util:
         ratio = max(max_width / image.width, max_height / image.height)
 
         return image.resize(
-            (int(image.width * ratio), int(image.height * ratio)), Image.ANTIALIAS
+            (int(image.width * ratio), int(image.height * ratio)), Image.LANCZOS
         )
