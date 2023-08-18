@@ -31,17 +31,18 @@ class NewsImage:
         # Title
         title_font_size = 50
         title_font = ImageFont.truetype(f'assets/News/fonts/{self.primary_font}', title_font_size)
-        draw.text((25, 520), icon['title'].upper(), TitleColor, font=title_font)
+        draw.text((25, 520), icon.get('title', '').upper(), TitleColor, font=title_font)
 
         # Description
+        description = icon.get('body')
         news_desc = ""
-        for desc in icon['body'].split("\n"):
-            for des in textwrap.wrap(desc, width=56):
-                news_desc += f'\n{des}'
-        description = news_desc  # Split the Description
-        description_font = ImageFont.truetype(f'assets/News/fonts/{self.secondary_font}', 18)
-        draw.multiline_text((25, 560), description,
-                            DescriptionColor, font=description_font, spacing=6)
+        if description:
+            for desc in description.split("\n"):
+                for des in textwrap.wrap(desc, width=56):
+                    news_desc += f'\n{des}'
+            description = news_desc  # Split the Description
+            description_font = ImageFont.truetype(f'assets/News/fonts/{self.secondary_font}', 18)
+            draw.multiline_text((25, 560), description,
+                                DescriptionColor, font=description_font, spacing=6)
         
-
         background.save(f"images/{icon['title']}.jpg")
